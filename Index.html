@@ -1,0 +1,2352 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jinyu Liu | Quantum Materials Physicist</title>
+    <link rel="icon" type="image/png" href="Images/favicon_circle.png" />
+    <link rel="apple-touch-icon" href="Images/favicon_circle.png" />
+    <meta
+      name="description"
+      content="Jinyu Liu — experimental condensed matter physicist working on quantum materials, topological phases, excitonic insulators, quantum transport, single-crystal growth, and AI-driven materials discovery."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f3ede2;
+        --bg-soft: #ece2d2;
+        --card: #fffaf2;
+        --card-2: #f8f1e7;
+        --text: #241a12;
+        --muted: #65584c;
+        --line: #d5c3ae;
+        --accent: #8f4e2e;
+        --accent-2: #a76a3b;
+        --accent-3: #27485e;
+        --shadow: 0 10px 30px rgba(62, 34, 16, 0.08);
+        --radius: 18px;
+        --max: 1180px;
+      }
+      body.dark {
+        --bg: #15110d;
+        --bg-soft: #1b1510;
+        --card: #211912;
+        --card-2: #261d16;
+        --text: #f2e8da;
+        --muted: #c4b4a2;
+        --line: #4a392d;
+        --accent: #d79b6d;
+        --accent-2: #efb07b;
+        --accent-3: #95c6e6;
+        --shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background:
+          radial-gradient(
+            circle at top right,
+            rgba(167, 106, 59, 0.12),
+            transparent 24rem
+          ),
+          radial-gradient(
+            circle at left 15%,
+            rgba(39, 72, 94, 0.08),
+            transparent 22rem
+          ),
+          linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+        color: var(--text);
+        font-family:
+          Inter,
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          sans-serif;
+        line-height: 1.65;
+        transition:
+          background 0.25s ease,
+          color 0.25s ease;
+      }
+      a {
+        color: var(--accent-3);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      .wrap {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 22px;
+      }
+      .mono {
+        font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+      }
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(10px);
+        background: color-mix(in srgb, var(--bg) 82%, transparent);
+        border-bottom: 1px solid var(--line);
+      }
+      .nav {
+        min-height: 68px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+      }
+      .brand {
+        color: var(--text);
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        line-height: 1.1;
+      }
+      .brand strong {
+        font-size: 1.02rem;
+        letter-spacing: 0.01em;
+      }
+      .brand span {
+        font-size: 0.75rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+      }
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .navlinks {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+      .navlinks a {
+        color: var(--muted);
+        font-size: 0.92rem;
+        font-weight: 600;
+      }
+      .navlinks a:hover {
+        color: var(--text);
+        text-decoration: none;
+      }
+      .icon-btn,
+      .pill-btn {
+        border: 1px solid var(--line);
+        background: var(--card);
+        color: var(--text);
+        border-radius: 999px;
+        cursor: pointer;
+        transition: 0.2s ease;
+      }
+      .icon-btn:hover,
+      .pill-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: var(--shadow);
+      }
+      .icon-btn {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        font-size: 1rem;
+      }
+      .menu-btn {
+        display: none;
+      }
+      .pill-btn {
+        padding: 10px 16px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+      .hero {
+        padding: 44px 0 20px;
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.35fr 0.9fr;
+        gap: 16px;
+        align-items: start;
+      }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: rgba(143, 78, 46, 0.08);
+        border: 1px solid rgba(143, 78, 46, 0.18);
+        color: var(--accent);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-size: 0.68rem;
+        max-width: min(360px, 100%);
+        white-space: normal;
+        word-break: break-word;
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-family: "EB Garamond", Georgia, serif;
+        font-size: clamp(2.8rem, 5.5vw, 4.7rem);
+        line-height: 0.98;
+        letter-spacing: -0.03em;
+        font-weight: 600;
+      }
+      .zh-name {
+        color: var(--muted);
+        font-family: "EB Garamond", Georgia, serif;
+        font-size: 3rem;
+        margin-bottom: 18px;
+      }
+      .lead {
+        font-size: 1.08rem;
+        color: var(--muted);
+        max-width: 68ch;
+        margin: 0 0 18px;
+      }
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 24px;
+      }
+      .hero-card,
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: linear-gradient(180deg, var(--card), var(--card-2));
+        box-shadow: var(--shadow);
+      }
+      .hero-card {
+        padding: 22px;
+      }
+      .hero-head-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 2.0fr);
+        gap: 18px;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+      .hero-head-text {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .hero-profile-spot {
+        width: 100%;
+        max-width: 280px;
+        aspect-ratio: 3 / 4;
+        border-radius: 18px;
+        overflow: hidden;
+        border: 2px solid var(--accent);
+        background: rgba(255, 255, 255, 0.35);
+      }
+      .hero-profile-spot img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+      }
+      .hero-profile-label {
+        display: none;
+        color: var(--muted);
+      }
+      .meta-list {
+        display: grid;
+        gap: 11px;
+      }
+      .meta-row {
+        display: grid;
+        grid-template-columns: 94px 1fr;
+        gap: 12px;
+        align-items: start;
+        font-size: 0.95rem;
+      }
+      .meta-row .label {
+        color: var(--muted);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.75rem;
+        padding-top: 2px;
+      }
+      .dob-value {
+        color: var(--accent-3);
+        font-weight: 700;
+        cursor: pointer;
+        transition: filter 0.16s ease, color 0.16s ease;
+        display: inline-block;
+      }
+      .dob-value.masked {
+        filter: blur(0.16rem);
+        letter-spacing: 0.15em;
+        user-select: none;
+      }
+      .dob-value:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+      }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-top: 18px;
+      }
+      .stat {
+        padding: 14px 12px;
+        text-align: center;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.28);
+      }
+      .stat .n {
+        display: block;
+        font-weight: 800;
+        font-size: 1.35rem;
+        line-height: 1.05;
+        color: var(--accent);
+      }
+      .stat .t {
+        display: block;
+        margin-top: 5px;
+        font-size: 0.76rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-weight: 700;
+      }
+      .section {
+        padding: 26px 0;
+      }
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 18px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--line);
+      }
+      .section-head h2 {
+        margin: 0;
+        font-family: "EB Garamond", Georgia, serif;
+        font-size: 2.08rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+      }
+      .section-head p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.98rem;
+      }
+      .section-tag {
+        font-size: 0.75rem;
+        font-weight: 800;
+        color: var(--accent);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .intro-card {
+        padding: 22px;
+      }
+      .research-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+      }
+      .research-card {
+        padding: 12px;
+        position: relative;
+        cursor: pointer;
+        overflow: hidden;
+        min-height: 150px;
+        transition: 0.22s ease;
+      }
+      .research-card:hover {
+        transform: translateY(-3px);
+      }
+      .research-card.active {
+        border-color: var(--accent);
+        box-shadow:
+          0 0 0 2px color-mix(in srgb, var(--accent) 18%, transparent),
+          var(--shadow);
+      }
+      .research-card .kicker {
+        font-size: 0.74rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 6px;
+      }
+      .research-card h3 {
+        margin: 6px 0 6px;
+        font-size: 1.08rem;
+        line-height: 1.3;
+      }
+      .research-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.93rem;
+      }
+
+      .research-card ul {
+        margin: 2px 0;
+        padding-left: 0.6rem;
+        list-style-position: inside;
+      }
+
+      .research-card li {
+        margin: 0;
+        padding: 0;
+        line-height: 1.35;
+      }
+
+      /* Alternate text color for bullets inside research cards */
+      .research-card ul li:nth-child(odd) {
+        color: var(--text);
+      }
+
+      .research-card ul li:nth-child(even) {
+        color: var(--accent-3);
+      }
+      .research-card .symbol {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        background: rgba(143, 78, 46, 0.09);
+        color: var(--accent);
+        font-size: 1.08rem;
+        margin-top: 12px;
+      }
+      .research-detail {
+        margin-top: 18px;
+        padding: 22px;
+        display: none;
+      }
+      .research-detail.active {
+        display: block;
+      }
+
+      /* Distinct background colors for each active research detail panel */
+      #detail-topology.active {
+        background: linear-gradient(
+          180deg,
+          color-mix(in srgb, var(--card) 85%, var(--accent) 15%),
+          color-mix(in srgb, var(--card-2) 85%, var(--accent) 15%)
+        );
+      }
+
+      #detail-transport.active {
+        background: linear-gradient(
+          180deg,
+          color-mix(in srgb, var(--card) 85%, var(--accent-3) 15%),
+          color-mix(in srgb, var(--card-2) 85%, var(--accent-3) 15%)
+        );
+      }
+
+      #detail-growth.active {
+        background: linear-gradient(
+          180deg,
+          color-mix(in srgb, var(--card) 85%, var(--accent-2) 15%),
+          color-mix(in srgb, var(--card-2) 85%, var(--accent-2) 15%)
+        );
+      }
+
+      #detail-ai.active {
+        background: linear-gradient(
+          180deg,
+          color-mix(in srgb, var(--card) 82%, #9d5dcc 18%),
+          color-mix(in srgb, var(--card-2) 82%, #9d5dcc 18%)
+        );
+      }
+      .detail-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 0.9fr;
+        gap: 18px;
+      }
+      .detail-block {
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.16);
+      }
+      .detail-block h4 {
+        margin: 0 0 10px;
+        font-size: 1rem;
+        color: var(--text);
+      }
+      .detail-block p,
+      .detail-block li {
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
+      .mini-gallery {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-top: 12px;
+      }
+      .mini-card {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        overflow: hidden;
+        background: var(--card);
+      }
+      .mini-visual {
+        aspect-ratio: 1.6/1;
+        background:
+          linear-gradient(
+            135deg,
+            rgba(143, 78, 46, 0.16),
+            rgba(39, 72, 94, 0.1)
+          ),
+          linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.4),
+            rgba(255, 255, 255, 0.05)
+          );
+        position: relative;
+      }
+      .mini-visual svg {
+        width: 100%;
+        height: 100%;
+      }
+      .mini-caption {
+        padding: 10px 12px;
+        font-size: 0.86rem;
+        color: var(--muted);
+      }
+      .pub-grid {
+        display: grid;
+        grid-template-columns: 1fr 0.9fr;
+        gap: 18px;
+        align-items: start;
+      }
+      .pub-panel {
+        padding: 22px;
+      }
+      .pub-metrics {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+      .pub-metric {
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.14);
+      }
+      .pub-metric strong {
+        display: block;
+        font-size: 1.35rem;
+        color: var(--accent);
+      }
+      .pub-metric span {
+        font-size: 0.82rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-weight: 700;
+      }
+      .updated {
+        font-size: 0.86rem;
+        color: var(--muted);
+        margin-top: 8px;
+      }
+      .pub-item {
+        padding: 18px 0;
+        border-top: 1px solid var(--line);
+      }
+      .pub-item:first-child {
+        border-top: none;
+        padding-top: 0;
+      }
+      .pub-title {
+        margin: 0;
+        font-weight: 800;
+        font-size: 1rem;
+        line-height: 1.45;
+      }
+      .pub-authors {
+        margin-top: 7px;
+        color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.55;
+      }
+      .pub-journal {
+        margin-top: 5px;
+        color: var(--accent);
+        font-size: 0.9rem;
+        font-style: italic;
+        font-weight: 700;
+      }
+      .badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 10px;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 0.73rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.16);
+        color: var(--text);
+      }
+      .badge.gold {
+        background: rgba(194, 145, 62, 0.14);
+      }
+      .badge.blue {
+        background: rgba(39, 72, 94, 0.13);
+      }
+      .badge.green {
+        background: rgba(65, 124, 82, 0.12);
+      }
+      .badge.purple {
+        background: rgba(116, 79, 171, 0.12);
+      }
+      .pub-highlight {
+        margin-top: 10px;
+        padding: 12px 14px;
+        border-left: 3px solid var(--accent);
+        background: rgba(143, 78, 46, 0.06);
+        border-radius: 0 12px 12px 0;
+        font-size: 0.92rem;
+        color: var(--muted);
+      }
+      .timeline {
+        padding: 22px;
+      }
+      .timeline-item {
+        position: relative;
+        padding: 0 0 18px 20px;
+        border-left: 2px solid var(--line);
+        margin-left: 8px;
+      }
+      .timeline-item:last-child {
+        padding-bottom: 0;
+      }
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -7px;
+        top: 6px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--card) 85%, transparent);
+      }
+      .timeline-date {
+        font-size: 0.77rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+      .timeline-role {
+        margin-top: 4px;
+        font-size: 1.02rem;
+        font-weight: 800;
+      }
+      .timeline-org {
+        color: var(--accent-3);
+        font-weight: 700;
+        font-size: 0.94rem;
+      }
+      .timeline-desc {
+        margin-top: 7px;
+        color: var(--muted);
+        font-size: 0.93rem;
+      }
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+      .list-card {
+        padding: 22px;
+      }
+      .list-card h3 {
+        margin: 0 0 12px;
+        font-size: 1.03rem;
+      }
+      .simple-list {
+        display: grid;
+        gap: 12px;
+      }
+      .simple-item {
+        padding: 12px 0;
+        border-top: 1px solid var(--line);
+      }
+      .simple-item:first-child {
+        border-top: none;
+        padding-top: 0;
+      }
+      .simple-item strong {
+        display: block;
+      }
+      .simple-item span {
+        color: var(--muted);
+        font-size: 0.93rem;
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 0.9fr;
+        gap: 18px;
+      }
+      .contact-card {
+        padding: 22px;
+      }
+      .contact-card h3 {
+        margin: 0 0 12px;
+        font-size: 1.03rem;
+      }
+      .contact-list {
+        display: grid;
+        gap: 12px;
+      }
+      .contact-item {
+        display: grid;
+        grid-template-columns: 92px 1fr;
+        gap: 12px;
+        align-items: start;
+      }
+      .contact-item .label {
+        color: var(--muted);
+        font-size: 0.76rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-weight: 800;
+        padding-top: 2px;
+      }
+      .contact-item div:last-child {
+        font-size: 0.95rem;
+      }
+      .note-box {
+        padding: 20px;
+        border-radius: 16px;
+        background: linear-gradient(
+          135deg,
+          color-mix(in srgb, var(--accent) 16%, transparent),
+          color-mix(in srgb, var(--accent-3) 14%, transparent)
+        );
+        border: 1px solid var(--line);
+      }
+      .note-box h3 {
+        margin: 0 0 10px;
+      }
+      .note-box p,
+      .note-box li {
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
+      footer {
+        padding: 28px 0 44px;
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+
+      /* Modal for enlarged figures */
+      .figure-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.85);
+        z-index: 1000;
+        place-items: center;
+        padding: 20px;
+      }
+
+      .figure-modal.active {
+        display: grid;
+      }
+
+      .figure-modal-content {
+        max-width: 85vw;
+        max-height: 85vh;
+        position: relative;
+        overflow: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .figure-modal img {
+        width: 50vw;
+        height: auto;
+        border-radius: 8px;
+        transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        cursor: zoom-in;
+        user-select: none;
+      }
+
+      .figure-modal img.zoomed {
+        cursor: grab;
+      }
+
+      .figure-modal img.zoomed:active {
+        cursor: grabbing;
+      }
+
+      .figure-modal-close {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        background: none;
+        border: none;
+        color: var(--text);
+        font-size: 2rem;
+        cursor: pointer;
+        padding: 0;
+        width: 40px;
+        height: 40px;
+        display: grid;
+        place-items: center;
+      }
+
+      .figure-modal-close:hover {
+        opacity: 0.7;
+      }
+
+      .mini-visual img {
+        cursor: pointer;
+      }
+
+      .mini-visual img:hover {
+        opacity: 0.9;
+      }
+
+      .magnifier-btn {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        background: rgba(0, 0, 0, 0.6);
+        border: none;
+        border-radius: 50%;
+        color: var(--text);
+        font-size: 22px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        z-index: 10;
+      }
+
+      .magnifier-btn:hover {
+        background: rgba(0, 0, 0, 0.85);
+        transform: scale(1.1);
+      }
+
+      .mini-visual {
+        position: relative;
+      }
+      @media (max-width: 1080px) {
+        .research-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .pub-grid,
+        .contact-grid,
+        .hero-grid,
+        .detail-grid {
+          grid-template-columns: 1fr;
+        }
+        .two-col {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 760px) {
+        .menu-btn {
+          display: grid;
+        }
+        .navlinks {
+          position: absolute;
+          top: 68px;
+          left: 0;
+          right: 0;
+          display: none;
+          padding: 14px 22px 20px;
+          background: var(--bg);
+          border-bottom: 1px solid var(--line);
+        }
+        .navlinks.open {
+          display: grid;
+          gap: 12px;
+        }
+        .navlinks a {
+          padding: 6px 0;
+        }
+        .hero {
+          padding-top: 40px;
+        }
+        .stats {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .section-head {
+          flex-direction: column;
+          align-items: start;
+        }
+        .research-grid {
+          grid-template-columns: 1fr;
+        }
+        .mini-gallery {
+          grid-template-columns: 1fr;
+        }
+        .contact-item,
+        .meta-row {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .news-list {
+        display: grid;
+        gap: 0;
+      }
+      .news-item {
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        gap: 16px;
+        padding: 16px 0;
+        border-top: 1px solid var(--line);
+        align-items: baseline;
+      }
+      .news-item:first-child {
+        border-top: none;
+      }
+      .news-date {
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+        white-space: nowrap;
+      }
+      .news-content {
+        font-size: 0.95rem;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+      @media (max-width: 760px) {
+        .news-item {
+          grid-template-columns: 1fr;
+          gap: 4px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Figure Modal -->
+    <div class="figure-modal" id="figureModal">
+      <div class="figure-modal-content">
+        <button class="figure-modal-close" id="figureModalClose">&times;</button>
+        <img id="figureModalImg" src="" alt="Enlarged figure" />
+      </div>
+    </div>
+
+    <div class="topbar">
+      <div class="wrap nav">
+        <a class="brand" href="#top">
+          <strong>Jinyu Liu</strong><span>Quantum Materials Physicist</span></a
+        >
+
+        <div class="nav-right">
+          <div class="navlinks" id="navlinks">
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#experience">Experience</a>
+            <a href="#research">Research</a>
+            <a href="#selected-papers">Selected Papers</a>
+            <a href="#teaching">Teaching &amp; Service</a>
+            <a href="#news">News</a>
+          </div>
+          <button
+            class="icon-btn"
+            id="themeToggle"
+            aria-label="Toggle dark mode"
+          >
+            ◐
+          </button>
+          <button
+            class="icon-btn menu-btn"
+            id="menuToggle"
+            aria-label="Toggle menu"
+          >
+            ☰
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <main id="top" class="wrap">
+      <section class="hero">
+        <div class="hero-grid">
+          <div>
+            <div class="hero-head-grid">
+              <div class="hero-profile-spot">
+                <img src="Images/profile_photo.jpg" alt="Your profile photo" />
+              </div>
+              <div class="hero-head-text">
+                <div class="eyebrow mono">
+                  Experimental Condensed Matter Physics
+                </div>
+                <h1>Jinyu Liu</h1>
+                <div class="zh-name">刘金雨</div>
+              </div>
+            </div>
+            <p class="lead">
+              Research Scientist in the field of experimental condensed matter physics, 
+              working on quantum materials, including topological phases, excitonic insulators, superconductors, and etc.
+              He conducts low temperature and high precision quantum transport measurements, single-crystal synthesis, 
+              low-dimensional device fabrication, and agentic AI-assisted materials discovery.
+            </p>
+            <div class="hero-actions">
+              <a class="pill-btn" href="mailto:jinyul1@uci.edu">Email</a>
+              <a
+                class="pill-btn"
+                href="https://scholar.google.com/citations?user=cLj6i8AAAAAJ&hl=en"
+                target="_blank"
+                rel="noopener"
+                >Google Scholar</a
+              >
+              <a
+                class="pill-btn"
+                href="https://orcid.org/0000-0002-3101-2587"
+                target="_blank"
+                rel="noopener"
+                >ORCID</a
+              >
+            </div>
+          </div>
+          <aside class="hero-card">
+              <h2>Brief Information</h2>
+            <div class="meta-list">
+              <div class="meta-row">
+               <div class="label">Position</div>
+                <div>
+                  Research Scientist
+                </div>
+              </div>
+              <div class="meta-row">
+                <div class="label">Institution</div>
+                <div>
+                  Department of Physics and Astronomy, University of California,
+                  Irvine
+                </div>
+              </div>
+              <div class="meta-row">
+                <div class="label">Office</div>
+                <div>210V Rowland Hall, University of California, Irvine, CA 92697</div>
+              </div>
+              <div class="meta-row">
+                <div class="label">Email</div>
+                <div><a href="mailto:jinyul1@uci.edu">jinyul1@uci.edu</a></div>
+              </div>
+              <!-- <div class="meta-row">
+                <div class="label">DOB</div>
+                <div
+                  id="dobValue"
+                  class="dob-value masked"
+                  role="button"
+                  aria-pressed="false"
+                  tabindex="0"
+                  data-dob="1992/12"
+                  >
+                  1992/12
+                </div>
+              </div> -->
+            </div>
+            <div class="stats">
+              <div class="stat">
+                <span class="n">48</span><span class="t">Papers</span>
+              </div>
+              <div class="stat">
+                <span class="n">2916</span><span class="t">Citations</span>
+              </div>
+              <div class="stat">
+                <span class="n">24</span><span class="t">h-index</span>
+              </div>
+              <div class="stat">
+                <span class="n">36</span><span class="t">i10-index</span>
+              </div>
+            </div>
+            <div class="updated">Metrics last updated: March 2026</div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <div class="section-head">
+          <div>
+            <h2>About</h2>
+          </div>
+          <p>Research profile.</p>
+        </div>
+        <div class="panel intro-card">
+          <p style="margin: 0; color: var(--muted); font-size: 1rem">
+            Research interests include agentic AI–driven discovery and design of
+            novel quantum materials; tuning and control of functional physical
+            properties via advanced experimental approaches; synthesis of high quality bulk
+            single crystals; fabrication of low-dimensional devices;
+            characterization of electronic, magnetic, and optical properties;
+            and quantum transport measurements under extreme conditions.
+          </p>
+        </div>
+      </section>
+
+      <section id="education" class="section">
+        <div class="section-head">  
+          <div>
+ <h2>Education</h2> 
+  </div>          
+                    <p>Condensed summary pulled into a cleaner site structure.</p>
+        </div>
+                 <div class="panel list-card">
+
+            <div class="simple-list">
+              <div class="simple-item">
+                <strong>Ph.D. in Physics — Tulane University (Aug. 2017)</strong>
+               New Orleans, USA. 
+                        <div class="timeline-org">Dissertation:
+                  <em>Quantum transport and magnetic properties of topological
+                    semimetals in AMnSb<sub>2</sub> (A = Sr, Ba, Yb and Eu)</em>.  Advisor: Zhiqiang Mao.</div> </div>
+                         <div class="simple-item">
+                          <div class="timeline-date mono">Oct. 2008 – Jul. 2012</div>
+                <strong
+                  >B.S. in Physics — University of Science and Technology of
+                  China</strong>
+                               Hefei, China 
+              </div>
+            </div>
+          </div>
+                 </div>
+      </section>
+
+      <section id="experience" class="section">
+        <div class="section-head">
+          <div>
+            <h2>Research Experience</h2>
+          </div>
+          <p>Appointments across UC Irvine, LANL, and UCLA.</p>
+        </div>
+        <div class="panel timeline">
+          <div class="timeline-item">
+            <div class="timeline-date mono">Oct. 2019 – Present</div>
+            <div class="timeline-role">
+              Research Scientist / Specialist / Postdoctoral Researcher
+            </div>
+            <div class="timeline-org">
+              Department of Physics and Astronomy, UC Irvine · PI: Luis A.
+              Jauregui
+            </div>
+                    </div>
+          <div class="timeline-item">
+            <div class="timeline-date mono">Apr. 2023 – Apr. 2024</div>
+            <div class="timeline-role">Faculty Researcher Guest</div>
+            <div class="timeline-org">Los Alamos National Laboratory</div>
+                      </div>
+          <div class="timeline-item">
+            <div class="timeline-date mono">Sep. 2017 – Sep. 2019</div>
+            <div class="timeline-role">Postdoctoral Researcher</div>
+            <div class="timeline-org">
+              Department of Physics and Astronomy, UCLA · PI: Ni Ni
+            </div>
+                     </div>
+                  </div>
+        </div>
+      </section>
+
+      <section id="research" class="section">
+        <div class="section-head">
+          <div>
+            <h2>Research Interests</h2>
+          </div>
+          <p>
+            Click a box to reveal related results, example platforms, and the
+            types of materials or devices involved.
+          </p>
+        </div>
+        <div class="research-grid">
+          <div class="panel research-card active" data-target="detail-topology">
+            <div class="kicker mono">◌ Theme 1</div>
+            <h3 style="text-align: center;">Topological phases and excitonic states</h3>
+            <ul>
+              <li>Topological phase transitions</li>
+              <li>3D quantum Hall states</li>
+              <li>Chiral surface states</li>
+              <li>Topological insulators</li>
+              <li>Dirac/Weyl/Nodal-line semimetals</li>
+              <li>Topological excitonic insulators</li>
+              <li>Topological superconductivity, etc.</li>
+            </ul>
+                     </div>
+          <div class="panel research-card" data-target="detail-transport">
+            <div class="kicker mono">⇄ Theme 2</div>
+            <h3 style="text-align: center;">High precision measurements and characterization </h3>
+            <ul>
+            <li>Transport at extremely low temperatures, high magnetic fields, and high strains</li>
+            <li>Thermoelectric and heat capacity measurements</li>
+            <li>Magnetization measurements and torque magnetometry</li>
+            <li>Raman and PL spectroscopy, etc.</li>
+            </ul>
+                      </div>
+          <div class="panel research-card" data-target="detail-growth">
+            <div class="kicker mono">⬡ Theme 3</div>
+            <h3 style="text-align: center;">Synthesis and device fabrication</h3>
+            <ul>
+              <li>High-quality bulk crystal growth (flux and CVT, etc.)</li>
+              <li>Thin-film growth (CVD, PLD, sputtering, etc.)</li>
+              <li>Meso/microscale device fabrication (FIB, EBL, etc.)</li>
+              <li>2D heterostructure fabrication, MEMS, etc.</li>
+              <li>Advanced device integration for strain engineering, thermal related measurements, etc.</li>
+            </ul>
+                     </div>
+          <div class="panel research-card" data-target="detail-ai">
+            <div class="kicker mono">✦ Theme 4</div>
+            <h3>Agentic AI for quantum materials discovery</h3>
+             <ul>
+              <li>
+              Benchmarking and validation of LLMs for quantum materials research.
+              </li>
+              <li>
+              AI-assisted search for novel quantum materials with functional properties;</li>
+              <li>
+              Data-driven screening and optimization of quantum material properties.
+              </li>
+              <li>
+              Developing AI-agents for literature review and data analysis.
+              </li>
+            </ul>
+          
+        </div>
+        </div>
+
+        <div class="panel research-detail active" id="detail-topology">
+          <div class="detail-grid">
+            <div class="detail-block">
+              <h4>Recent works in tuning HfTe<sub>5</sub></h4>
+              <ul>
+                <li>
+                  Controllable strain-driven topological phase transition in
+                  HfTe<sub>5</sub>.
+                </li>
+                <li>
+                  Possible spin-triplet excitonic insulator in the ultra-quantum
+                  limit of HfTe<sub>5</sub>.
+                </li>
+                              </ul>
+              <div class="mini-gallery">
+                <div class="mini-card">
+                  <div class="mini-visual">
+                    <img
+                      id="tpt-figure"
+                      src="Images/TPT_figure_3.webp"
+                      alt="Topological phase transition research figure"
+                      style="width: 100%; height: 100%; object-fit: cover;"
+                    />
+                    <button class="magnifier-btn" id="tpt-magnifier" title="Enlarge figure">🔍</button>
+                  </div>
+                  <div class="mini-caption">
+                    <a href="https://www.nature.com/articles/s41467-023-44547-7" target="_blank" rel="noopener">Strain-driven topological phase-transition in HfTe<sub>5</sub>. (click here to view the paper on the publisher's website) </a>
+                  </div>
+                </div>
+                <div class="mini-card">
+                  <div class="mini-visual">
+                    <img id="spin-triplet-figure" src="Images/Spin_triplet_EI.png" alt="Spin triplet exciton insulator figure" style="width: 100%; height: 100%; object-fit: cover;" />
+                    <button class="magnifier-btn" id="spin-triplet-magnifier" title="Enlarge figure">🔍</button>
+                  </div>
+                  <div class="mini-caption">
+                    <a href="https://journals.aps.org/prl/abstract/10.1103/bj2n-4k2w" target="_blank" rel="noopener">Spin triplet exciton insulator in HfTe<sub>5</sub>. (<em>Phys. Rev. Lett.</em> (2025)) </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="detail-block">
+              <h4>Representative works in quantum materials</h4>
+              <p>
+               <li>
+                  Tuning topological phases by chemical substitution in Eu<sub>1-x</sub>Sr<sub>x</sub>Mn<sub>1-z</sub>Sb<sub>2</sub>. <a href="https://www.nature.com/articles/s41427-022-00369-5" target="_blank" rel="noopener"><em>NPG Asia Materials</em> (2022)</a>.
+                </li>
+                 <li>
+                  Spin-valley locking and bulk quantum Hall effect in BaMnSb<sub>2</sub>. <a href="https://www.nature.com/articles/s41467-021-24369-1" target="_blank" rel="noopener"><em>Nat. Commun.</em> (2021)</a>.
+                </li>
+                <li>
+                  Nodal line semimetals in distorted square lattice of SrZnSb<sub>2</sub>. <a href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.100.195123" target="_blank" rel="noopener"><em>PRB</em> (2019)</a>.
+                </li>
+                 <li>
+                   Magnetic topological semimetal caused by AFM canting in Sr<sub>1-y</sub>Mn<sub>1-z</sub>Sb<sub>2</sub>. <a href="https://www.nature.com/articles/nmat4953" target="_blank" rel="noopener"><em>Nat. Mat.</em> (2017)</a>.
+                </li>
+                  <li>
+                    Quantum transport of Weyl fermions of the zeroth Landau level in YbMnBi<sub>2</sub>. <a href="https://www.nature.com/articles/s41467-017-00673-7" target="_blank" rel="noopener"><em>Nat. Commun.</em> (2017)</a>.
+                </li>
+                <li>
+                  Topological nodal-line fermions in ZrSiSe/Te. <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.117.016602" target="_blank" rel="noopener"><em>PRL</em> (2016)</a>.
+                </li>
+                <li>
+                  Nearly massless Dirac fermions in BaMnSb<sub>2</sub>. <a href="https://www.nature.com/articles/srep30525" target="_blank" rel="noopener"><em>Sci. Rep.</em> (2016)</a>.
+                </li>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel research-detail" id="detail-transport">
+          <div class="detail-grid">
+            <div class="detail-block">
+              <h4>Measurement approaches</h4>
+              <ul>
+                <li>
+                  Strong background in low-temperature (down to 10 mK) and high magnetic field (up to 100 T) quantum transport measurements
+                </li>
+                <li>Developing and FEA modeling novel measurement techniques including torque magnetometry, thermoelectric measurement and various types of strain apparatuses.</li>
+                <li>
+                 More than a decade of experience in advanced characterization techniques such as magnetization, heat capacity, XRD, SEM/EDS, and Raman/PL spectroscopy.
+                </li>
+              </ul>
+              <div class="mini-gallery">
+                <div class="mini-card">
+                  <div class="mini-visual">
+                    <img
+                      id="pulse-field-figure"
+                      src="Images/Pulse_field_sample.jpg"
+                      alt="Pulsed field measurement sample"
+                      style="width: 100%; height: 100%; object-fit: cover;"
+                    />
+                    <button class="magnifier-btn" id="pulse-field-magnifier" title="Enlarge figure">🔍</button>
+                  </div>
+                  <div class="mini-caption">
+                    A sample prepared for pulsed field measurements covered by thick GE varnish to reduce vibration noise.
+                  </div>
+                </div>
+                <div class="mini-card">
+                  <div class="mini-visual">
+                    <img
+                      id="bending-strain-figure"
+                      src="Images/Bending_strain_cell.jpg"
+                      alt="Bending strain cell for transport measurements"
+                      style="width: 100%; height: 100%; object-fit: cover;"
+                    />
+                    <button class="magnifier-btn" id="bending-strain-magnifier" title="Enlarge figure">🔍</button>
+                  </div>
+                  <div class="mini-caption">
+                    A homemade bending strain cell for applying controlled large strain to vdW samples. Solidworks and Comsol were used for design and simulation.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="detail-block">
+              <h4>Representative setups and devices</h4>
+              <div class="mini-gallery" style="grid-template-columns: 1fr 1fr; grid-template-rows: auto auto auto; gap: 12px;">
+                <div class="mini-card">
+                  <div class="mini-visual">
+                    <img
+                      id="pzt-strain-figure"
+                      src="Images/PZT_strain_cell.jpg"
+                      alt="PZT strain cell"
+                      style="width: 100%; height: 100%; object-fit: cover;"
+                    />
+                    <button class="magnifier-btn" id="pzt-strain-magnifier" title="Enlarge figure">🔍</button>
+                  </div>
+                  <div class="mini-caption">Homebuilt strain cell.</div>
+                </div>
+                <div class="mini-card">
+                  <div class="mini-visual">
+                    <img
+                      id="circular-device-figure"
+                      src="Images/Circular_device.jpg"
+                      alt="Multi-terminal circular device"
+                      style="width: 100%; height: 100%; object-fit: cover;"
+                    />
+                    <button class="magnifier-btn" id="circular-device-magnifier" title="Enlarge figure">🔍</button>
+                  </div>
+                  <div class="mini-caption">Circular prepattern device.</div>
+                </div>
+                <div class="mini-card">
+                  <div class="mini-visual">
+                    <img
+                      id="thermoelectric-figure"
+                      src="Images/Thermoelectric_measurement.jpg"
+                      alt="Thermoelectric measurement setup"
+                      style="width: 100%; height: 100%; object-fit: cover;"
+                    />
+                    <button class="magnifier-btn" id="thermoelectric-magnifier" title="Enlarge figure">🔍</button>
+                  </div>
+                  <div class="mini-caption">Thermoelectric setup.</div> 
+                </div>
+                <div class="mini-card">
+                  <div class="mini-visual">
+                    <img
+                      id="thermo-device-figure"
+                      src="Images/thermo_device.jpg"
+                      alt="Thermoelectric measurement device"
+                      style="width: 100%; height: 100%; object-fit: cover;"
+                    />
+                    <button class="magnifier-btn" id="thermo-device-magnifier" title="Enlarge figure">🔍</button>
+                  </div>
+                  <div class="mini-caption">MEMS-strain device.</div>
+                </div>
+                <div class="mini-card">
+                  <div class="mini-visual">
+                    <img
+                      id="torque-figure"
+                      src="Images/torque.jpg"
+                      alt="Torque magnetometry setup"
+                      style="width: 100%; height: 100%; object-fit: cover;"
+                    />
+                    <button class="magnifier-btn" id="torque-magnifier" title="Enlarge figure">🔍</button>
+                  </div>
+                  <div class="mini-caption">Torque magnetometry.</div>
+                </div>
+                <div class="mini-card">
+                  <div class="mini-visual">
+                    <img
+                      id="mems-thermal-figure"
+                      src="Images/mems_thermal.jpg"
+                      alt="MEMS thermal measurement platform"
+                      style="width: 100%; height: 100%; object-fit: cover;"
+                    />
+                    <button class="magnifier-btn" id="mems-thermal-magnifier" title="Enlarge figure">🔍</button>
+                  </div>
+                  <div class="mini-caption">MEMS-thermal device.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel research-detail" id="detail-growth">
+          <div class="detail-grid">
+            <div class="detail-block">
+              <h4>Materials and platforms</h4>
+              <ul>
+                <li>
+                  Decade-long experience in growing high quality single crystals and fabricating low dimensional devices.
+                </li>
+                <li>Fabrication of low dimensional devices based on novel quantum materials</li>
+                <li>
+                  Developing advanced techniques for synthesizing bulk crystals and low dimensional materials.
+                </li>
+              </ul>
+              <div class="mini-gallery">
+                <div class="mini-card">
+                  <div class="mini-visual">
+                    <img
+                      id="eu-bamnsb2-figure"
+                      src="Images/Eu-BaMnSb2.jpg"
+                      alt="Eu-BaMnSb2 single crystal"
+                      style="width: 100%; height: 100%; object-fit: cover;"
+                    />
+                    <button class="magnifier-btn" id="eu-bamnsb2-magnifier" title="Enlarge figure">🔍</button>
+                  </div>
+                  <div class="mini-caption">
+                    A Hall bar sample made by FIB.
+                  </div>
+                </div>
+                <div class="mini-card">
+                  <div class="mini-visual">
+                    <img
+                      id="ta114-hallbar-figure"
+                      src="Images/Ta114_Hall_bar.jpg"
+                      alt="Ta114 Hall bar device"
+                      style="width: 100%; height: 100%; object-fit: cover;"
+                    />
+                    <button class="magnifier-btn" id="ta114-hallbar-magnifier" title="Enlarge figure">🔍</button>
+                  </div>
+                  <div class="mini-caption">
+                   A Hall bar sample fabricated by EBL.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="detail-block">
+              <h4>Representative Crystals</h4>
+              <div class="mini-gallery" style="gap: 6px;">
+                <div class="mini-card">
+                  <div class="mini-visual">
+                    <img
+                      id="mose2-flux-figure"
+                      src="Images/MoSe2_flux.jpg"
+                      alt="Flux-grown MoSe2 single crystal"
+                      style="width: 100%; height: 100%; object-fit: cover;"
+                    />
+                    <button class="magnifier-btn" id="mose2-flux-magnifier" title="Enlarge figure">🔍</button>
+                  </div>
+                  <div class="mini-caption">
+                    Flux-grown MoSe<sub>2</sub>.
+                  </div>
+                </div>
+                <div class="mini-card">
+                  <div class="mini-visual">
+                    <img
+                      id="hfte5-cvt-figure"
+                      src="Images/HfTe5_CVT.jpg"
+                      alt="CVT-grown HfTe5 single crystal"
+                      style="width: 100%; height: 100%; object-fit: cover;"
+                    />
+                    <button class="magnifier-btn" id="hfte5-cvt-magnifier" title="Enlarge figure">🔍</button>
+                  </div>
+                  <div class="mini-caption">
+                    CVT-grown HfTe<sub>5</sub>.
+                  </div>
+                </div>
+                <div class="mini-card">
+                  <div class="mini-visual">
+                    <img
+                      id="fesete-figure"
+                      src="Images/FeSeTe.jpg"
+                      alt="FeSe0.45Te0.55 single crystal"
+                      style="width: 100%; height: 100%; object-fit: cover;"
+                    />
+                    <button class="magnifier-btn" id="fesete-magnifier" title="Enlarge figure">🔍</button>
+                  </div>
+                  <div class="mini-caption">
+                    FeSe<sub>0.45</sub>Te<sub>0.55</sub>.
+                  </div>
+                </div>
+                <div class="mini-card">
+                  <div class="mini-visual">
+                    <img
+                      id="mote2-figure"
+                      src="Images/MoTe2_flux.jpg"
+                      alt="1T' MoTe2 single crystal"
+                      style="width: 100%; height: 100%; object-fit: cover;"
+                    />
+                    <button class="magnifier-btn" id="mote2-magnifier" title="Enlarge figure">🔍</button>
+                  </div>
+                  <div class="mini-caption">
+                    1T’ MoTe<sub>2</sub>.
+                  </div>
+                </div>
+              </div>
+              <p style="margin: 4px 0 0; color: var(--muted); font-size: 0.9rem;">
+               Upon request, see more crystals in <a href="https://drive.google.com/drive/folders/1E-jPLGCU1KMsPiN6OitJZomCh_b38VGr?usp=drive_link" target="_blank" rel="noopener"><strong>JYL_Quan._Mater.</strong></a>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel research-detail" id="detail-ai">
+          <div class="detail-grid">
+            <div class="detail-block">
+              <h4>AI-assisted workflow ideas</h4>
+              <ul>
+                <li>
+                  Agentic screening for candidate topological and excitonic
+                  materials.
+                </li>
+                <li>
+                  Data-driven prioritization of synthesis or transport
+                  measurements.
+                </li>
+                <li>
+                  Linking structure, topology, magnetism, and quantum geometry
+                  descriptors.
+                </li>
+              </ul>
+              <div class="mini-gallery">
+                <div class="mini-card" style="grid-column: 1 / -1; max-width: 500px; margin: 0 auto;">
+                  <div class="mini-visual" style="aspect-ratio: auto;">
+                    <img
+                      id="ai-flowchart-figure"
+                      src="Images/QM%20with%20AIs.jpeg"
+                      alt="A flow chart of quantum materials discovery involving LLMs"
+                      style="width: 100%; height: auto; object-fit: contain;"
+                    />
+                    <button class="magnifier-btn" id="ai-flowchart-magnifier" title="Enlarge figure">🔍</button>
+                  </div>
+                  <div class="mini-caption">
+                    A flow chart of quantum materials discovery involving LLMs.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="detail-block">
+              <h4>Research vision</h4>
+              <div class="mini-gallery" style="grid-template-columns: 1fr; justify-items: center;">
+                <div class="mini-card" style="max-width: 100%;">
+                  <div class="mini-visual" style="aspect-ratio: auto;">
+                    <img
+                      id="qmd-research-figure"
+                      src="Images/QMD%20research%20involving%20AI.jpg"
+                      alt="Quantum Materials & Devices research cycle involving AI"
+                      style="width: 100%; height: auto; object-fit: contain;"
+                    />
+                    <button class="magnifier-btn" id="qmd-research-magnifier" title="Enlarge figure">🔍</button>
+                  </div>
+                  <div class="mini-caption">
+                    AI driven Quantum Materials &amp; Devices research cycle.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="selected-papers" class="section">
+        <div class="section-head">
+          <div>
+            <h2>Selected Papers</h2>
+          </div>
+          <p>
+            View full list on
+            <a
+              href="https://scholar.google.com/citations?user=cLj6i8AAAAAJ&hl=en"
+              target="_blank"
+              rel="noopener"
+              ><strong>Google Scholar</strong>; H-index: <strong>24</strong>;
+              I10-index: <strong>36</strong>.</a
+            >.
+          </p>
+        </div>
+        <div class="pub-item">
+          <h3 class="pub-title">
+            Possible spin triplet exciton insulator in the ultra-quantum limit
+            of HfTe<sub>5</sub>
+          </h3>
+          <div class="pub-authors">
+            <strong>Jinyu Liu</strong>, Varsha Subramanyan, Robert Welser,
+            Timothy McSorley, Triet Ho, David Graf, Michael T. Pettes, Avadh B.
+            Saxena, Laurel E. Winter, Shi-Zeng Lin, Luis A. Jauregui
+          </div>
+          <div class="pub-journal">
+            Physical Review Letters 135, 04660 (2025), Editors’ Suggestion
+          </div>
+          <div class="pub-highlight">
+            Unveils a possible spin-triplet excitonic insulator phase in HfTe<sub>5</sub> under ultra-quantum limit, marked by unique transport signatures and theoretical insights.
+          </div>
+          <div class="badges">
+            
+            <span class="badge gold"><a href="https://promo.aps.org/PRL2025?_gl=1*13hvdgp*_gcl_au*MTU5NzMwMTg3My4xNzc0ODA1MDQ3*_ga*MTkyNzc0OTYyNS4xNzc0ODA1MDQ3" target="_blank" rel="noopener">PRL Collection of the Year 2025</a></span
+          
+              
+            ><span class="badge green"
+              >Featured by <a href="https://phys.org/news/2025-07-physicists-state-quantum.html" target="_blank" rel="noopener">Phys.org,</a> <a href="https://cint.lanl.gov/news/july2025-possiblespin-tripletexcitonicinsulatorintheultraquantumlimitofhfte51.pdf" target="_blank" rel="noopener">LANL News,</a> <a href="https://nasaspacenews.com/2025/07/uc-irvine-discovers-a-groundbreaking-spin%e2%80%91triplet-excitonic-insulator-a-new-quantum-phase-of-matter/#google_vignette" target="_blank" rel="noopener">NASA Space News,</a>
+              <a href="https://www.sciencedaily.com/releases/2025/11/251130205501.htm" target="_blank" rel="noopener">ScienceDaily,</a> <a href="https://www.iflscience.com/physics/possible-spin-triplet-exciton-insulator-in-the-ultra-quantum-limit-of-hfte5-84567/" target="_blank" rel="noopener">IFLScience,</a> <a href="https://knowridge.com/2025/07/scientists-create-a-never-before-seen-state-of-matter-in-the-lab/" target="_blank" rel="noopener">Knowridge,</a> <a href="https://www.163.com/dy/article/K5E4J4UE05561IOL.html?f=post1603_tab_news" target="_blank" rel="noopener">NetEase 网易新闻</a>...</span
+            >
+          </div>
+          <div class="pub-authors"> 
+            See the Spotlight essay in <em>Newton</em>, a new Cell Press journal, by Johnny Wong: <a href="https://www.cell.com/newton/fulltext/S2950-6360(25)00222-1" target="_blank" rel="noopener">Unlocking a rare spin-triplet quantum phase.</a>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <h3 class="pub-title">
+            Controllable strain-driven topological phase transition and dominant
+            surface state transport in high-quality HfTe<sub>5</sub> samples
+          </h3>
+          <div class="pub-authors">
+            <strong>Jinyu Liu</strong>, Yinong Zhou, Sebastian Yepez Rodriguez,
+            Matthew A. Delmont, Robert A. Welser, Nicholas Sirica, Kaleb
+            McClure, Paolo Vilmercati, Joseph W. Ziller, Norman Mannella, Javier
+            D. Sanchez-Yamagishi, Michael T. Pettes, Ruqian Wu, Luis A. Jauregui
+          </div>
+          <div class="pub-journal">Nature Communications 15, 332 (2024)</div>
+           <div class="pub-highlight">
+           Manipulating the topological phases of quantum materials is necessary to fully leverage their potential for future electronics. Here, the authors experimentally demonstrate the controllable transition from a weak to a strong topological insulator phase through the in-situ application of high strain.
+          </div>
+          <div class="badges">
+            <span class="badge green"
+              >Featured by <a href="https://ps.uci.edu/news/3036/" target="_blank" rel="noopener">UCI News,</a> <a href="https://cint.lanl.gov/news/jan2024-controllablestrain-driventopologicalphasetransitionanddominantsurface-statetransportinhfte5.pdf" target="_blank" rel="noopener">LANL News,</a> <a href="https://phys.org/news/2024-01-reveals-quantum-topological-potential-material.html" target="_blank" rel="noopener">Phys.org,</a> <a href="https://link.springer.com/article/10.1557/s43577-024-00712-x" target="_blank" rel="noopener">MRS Bulletin</a></span
+            >
+          </div>
+           <div class="pub-authors"> 
+            Read the Materials News in <em>MRS Bulletin</em> by Molly McDonough: <a href="https://link.springer.com/article/10.1557/s43577-024-00712-x" target="_blank" rel="noopener">Unlocking topological phase transitions in HfTe5 through strain.</a>
+          </div>
+        </div>
+        <div class="pub-item">
+          <h3 class="pub-title">
+            Spin-valley locking and bulk quantum Hall effect in a
+            noncentrosymmetric Dirac semimetal BaMnSb<sub>2</sub>
+          </h3>
+          <div class="pub-authors">
+            <strong>J. Y. Liu</strong>, J. Yu, J. L. Ning, H. M. Yi, L. Miao, L.
+            J. Min, K. A. Lopez, Y. L. Zhu, et al.
+          </div>
+          
+                  <div class="pub-journal">Nature Communications 12, 4062 (2021)</div>
+             <div class="pub-highlight">
+           Valley dependent spin polarization called spin-valley locking appears in absence of magnetism but it is limited to rare examples of transition metal dichalcogenides. Here, the authors report evidence of spin-valley locking and stacked quantum Hall effect in a bulk Dirac semimetal BaMnSb2.
+          </div>
+        </div>
+        <div class="pub-item">
+          <h3 class="pub-title">
+            Nontrivial topology in the layered Dirac nodal-line semimetal
+            candidate with distorted Sb square nets
+          </h3>
+          <div class="pub-authors">
+            <strong>Jinyu Liu</strong>, Pengfei Liu, Kyle Gordon, Eve
+            Emmanouilidou, Jie Xing, David Graf, Bryan C. Chakoumakos, Yan Wu,
+            Huibo Cao, Dan Dessau, Qihang Liu, Ni Ni
+          </div>
+          <div class="pub-journal">Physical Review B 100, 195123 (2019)</div>
+          <div class="badges">
+            <span class="badge blue"> <a href="https://nationalmaglab.org/user-facilities/dc-field/research/science-highlights/exploring-topological-semimetals-in-high-magnetic-fields/" target="_blank" rel="noopener">Science highlighted by NHMFL</a></span>
+          </div>
+        </div>
+        <div class="pub-item">
+          <h3 class="pub-title">
+            A magnetic topological semimetal
+            Sr<sub>1-y</sub>Mn<sub>1-z</sub>Sb<sub>2</sub> (y, z &lt; 0.1)
+          </h3>
+          <div class="pub-authors">
+            <strong>J. Y. Liu</strong>, J. Hu, Qiang Zhang, D. Graf, H. B. Cao,
+            S. M. A. Radmanesh, D. J. Adams, Y. L. Zhu, G. F. Cheng, X. Liu, W.
+            A. Phelan, J. Wei, M. Jaime, F. Balakirev, David Alan Tennant, J. F.
+            DiTusa, I. Chiorescu, L. Spinu, Z. Q. Mao
+          </div>
+          <div class="pub-journal">Nature Materials 16, 905–910 (2017)</div>
+          <div class="badges">
+            <span class="badge green"
+              >Highlighted by DOE, ORNL, NHMFL, Phys.org</span
+            >
+          </div>
+        </div>
+        <div class="pub-item">
+          <h3 class="pub-title">
+            Unusual interlayer quantum transport behavior caused by the zeroth
+            Landau level in YbMnBi<sub>2</sub>
+          </h3>
+          <div class="pub-authors">
+            <strong>J. Y. Liu</strong>, J. Hu, D. Graf, T. Zou, M. Zhu, Y. Shi,
+            S. Che, S. M. A. Radmanesh, C. N. Lau, L. Spinu, H. B. Cao, X. Ke,
+            Z. Q. Mao
+          </div>
+          <div class="pub-journal">Nature Communications 8, 646 (2017)</div>
+          <div class="badges">
+            <a href="https://nationalmaglab.org/news-events/news/best-research-of-2017/" target="_blank" rel="noopener" class="badge blue">
+              Featured by NHMFL as one of the best research results of 2017 in the category of Topological Matter
+            </a>
+          </div>
+        </div>
+        <div class="pub-item">
+          <h3 class="pub-title">
+            Toward tunable quantum transport and novel magnetic states in
+            Eu<sub>1-x</sub>Sr<sub>x</sub>Mn<sub>1-z</sub>Sb<sub>2</sub> (z &lt;
+            0.05)
+          </h3>
+          <div class="pub-authors">
+            Qiang Zhang+, <strong>Jinyu Liu</strong>+, H. Cao, A. Phelan, D.
+            Graf, J. F. DiTusa, D. A. Tennant, Z. Mao
+          </div>
+          <div class="pub-journal"><a href="https://www.nature.com/articles/s41427-022-00369-5" target="_blank" rel="noopener"><em>NPG Asia Materials</em></a> 14, 22 (2022)</div>
+                 </div>
+        <div class="pub-item">
+          <h3 class="pub-title">
+            Coupled electronic and magnetic relaxation in Fe<sub>1+y</sub>Te:
+            direct evidence for the interaction between itinerant carriers and
+            local moments
+          </h3>
+          <div class="pub-authors">
+            B. Qian+, <strong>J. Y. Liu</strong>+, F. M. Zhang, F. J. Kong, W.
+            Zhou, Q. C. Gu, Y. Fang, Z. D. Han, X. F. Jiang, Y. L. Zhu, Y. Wang,
+            J. Hu, Z. Q. Mao
+          </div>
+          <div class="pub-journal">
+            Journal of Physics: Condensed Matter 34, 025601 (2021)
+          </div>
+        </div>
+        <div class="pub-item">
+          <h3 class="pub-title">
+            Thermal transport in quasi-1D van der Waals crystal
+            Ta<sub>2</sub>Pd<sub>3</sub>Se<sub>8</sub>
+            nanowires: size and length dependence
+          </h3>
+          <div class="pub-authors">
+            Qian Zhang+, Chenhan Liu+, Xue Liu+,
+            <strong>Jinyu Liu</strong>+, et al.
+          </div>
+          <div class="pub-journal">ACS Nano 12, 2634–2642 (2018)</div>
+                 </div>
+        <div class="pub-item">
+          <h3 class="pub-title">
+            Nearly massless Dirac fermions hosted by Sb square net in BaMnSb<sub
+              >2</sub
+            >
+          </h3>
+          <div class="pub-authors">
+            <strong>J. Y. Liu</strong>, Jin Hu, Huibo Cao, Yanglin Zhu, Alyssa
+            Chuang, D. Graf, D. J. Adams, et al.
+          </div>
+          <div class="pub-journal">Scientific Reports 6, 30525 (2016)</div>
+        </div>
+        <div class="pub-item">
+          <h3 class="pub-title">
+            Direct fabrication of functional ultrathin single-crystal nanowires
+            from quasi-one-dimensional van der Waals crystals
+          </h3>
+          <div class="pub-authors">
+            Xue Liu+, <strong>J. Y. Liu</strong>+, Liubov Yu Antipina, Jin Hu,
+            Chunlei Yue, Ana M. Sanchez, Pavel B. Sorokin, Zhiqiang Mao, Jiang
+            Wei
+          </div>
+          <div class="pub-journal">Nano Letters 16, 6188–6195 (2016)</div>
+         
+        </div>
+      </section>
+
+      <section id="teaching" class="section">
+        <div class="section-head">
+          <div>
+            <h2>Teaching, Mentoring and Service</h2>
+          </div>
+          <p>...</p>
+        </div>
+        <div class="two-col">
+            <div class="panel list-card">
+            <h3>Teaching and mentoring</h3>
+            <div class="simple-list">
+              <div class="simple-item">
+                <strong>Teaching assistantship</strong
+                ><span
+                  >Electronic Properties of Materials (2016), Solid State
+                  Physics (2014), General Physics I (2013).</span
+                >
+              </div>
+              <div class="simple-item">
+                <strong>Teaching lab instructor</strong
+                ><span
+                  >General Physics II Lab (2016), Introductory Physics II Lab
+                  (2013), Introductory Physics I Lab (2012).</span
+                >
+              </div>
+              <div class="simple-item">
+                <strong>Research mentoring</strong
+                ><span
+                  >Supervising undergraduate and graduate students at UC Irvine;
+                  mentoring at UCLA and Tulane.</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="panel list-card">
+            <h3>Service and training</h3>
+            <div class="simple-list">
+              <div class="simple-item">
+                <strong>Professional service</strong
+                ><span
+                  >APS member; APS March Meeting session chair; LANL CINT
+                  External Proposal Review Board; UCI Physics & Astronomy DEI
+                  committee.</span
+                >
+              </div>
+              <div class="simple-item">
+                <strong>Peer review</strong
+                ><span
+                  >Science Advances, PRL, PRResearch, PRB, PRMaterials, Journal
+                  of Applied Physics, Nanoscale, CEJA.</span
+                >
+              </div>
+              <div class="simple-item">
+                <strong>Additional training</strong
+                ><span
+                  >Quantum Material Synthesis Workshop (2025), Workshop on
+                  Quantum Information and Computing Innovations (2024), AVS
+                  Quantum Science Workshop (2023), and others.</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="news" class="section">
+        <div class="section-head">
+          <div>
+            <h2>New Posts</h2>
+          </div>
+          <p>Latest updates and announcements.</p>
+        </div>
+        <div class="panel news-list">
+          <div class="news-item">
+            <div class="news-date mono">03/18/2026</div>
+            <div class="news-content">Jinyu gives an oral presentation at the APS Global Summit 2026 in Denver, CO.</div>
+          </div>
+          <div class="news-item">
+            <div class="news-date mono">03/03/2026</div>
+            <div class="news-content">Our paper is selected in the <a href="https://promo.aps.org/PRL2025" target="_blank" rel="noopener">PRL Collection of the Year 2025</a>.</div>
+          </div>
+          <div class="news-item">
+            <div class="news-date mono">......</div>
+            <div class="news-content"></div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        Ready for collaborations, talks, and academic opportunities.
+      </footer>
+
+
+
+
+    </main>
+
+    <script>
+      const themeToggle = document.getElementById("themeToggle");
+      const menuToggle = document.getElementById("menuToggle");
+      const navlinks = document.getElementById("navlinks");
+      const savedTheme = localStorage.getItem("jl-theme");
+      if (savedTheme === "dark") document.body.classList.add("dark");
+      themeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark");
+        localStorage.setItem(
+          "jl-theme",
+          document.body.classList.contains("dark") ? "dark" : "light",
+        );
+      });
+      if (menuToggle) {
+        menuToggle.addEventListener("click", () =>
+          navlinks.classList.toggle("open"),
+        );
+        navlinks
+          .querySelectorAll("a")
+          .forEach((a) =>
+            a.addEventListener("click", () =>
+              navlinks.classList.remove("open"),
+            ),
+          );
+      }
+      const cards = document.querySelectorAll(".research-card");
+      const details = document.querySelectorAll(".research-detail");
+      cards.forEach((card) => {
+        card.addEventListener("click", () => {
+          const target = card.dataset.target;
+          cards.forEach((c) => c.classList.remove("active"));
+          details.forEach((d) => d.classList.remove("active"));
+          card.classList.add("active");
+          document.getElementById(target).classList.add("active");
+        });
+      });
+
+      /* DOB click-to-reveal */
+      const dobValue = document.getElementById("dobValue");
+      if (dobValue) {
+        const rawDob = dobValue.dataset.dob || dobValue.textContent.trim();
+        let isRevealed = false;
+
+        const mask = "••••/••";
+
+        const updateDobUi = () => {
+          if (isRevealed) {
+            dobValue.textContent = rawDob;
+            dobValue.classList.remove("masked");
+            dobValue.setAttribute("aria-pressed", "true");
+            dobValue.setAttribute("title", "Click to hide");
+          } else {
+            dobValue.textContent = mask;
+            dobValue.classList.add("masked");
+            dobValue.setAttribute("aria-pressed", "false");
+            dobValue.setAttribute("title", "Click to reveal DOB");
+          }
+        };
+
+        updateDobUi();
+
+        dobValue.addEventListener("click", () => {
+          isRevealed = !isRevealed;
+          updateDobUi();
+        });
+
+        dobValue.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            isRevealed = !isRevealed;
+            updateDobUi();
+          }
+        });
+      }
+
+      /* Figure modal functionality */
+      const figureModal = document.getElementById("figureModal");
+      const figureModalImg = document.getElementById("figureModalImg");
+      const figureModalClose = document.getElementById("figureModalClose");
+      const figureModalContent = document.querySelector(".figure-modal-content");
+      const tptFigure = document.getElementById("tpt-figure");
+      const tptMagnifier = document.getElementById("tpt-magnifier");
+      let currentZoom = 1;
+      let panX = 0;
+      let panY = 0;
+      let isDragging = false;
+      let dragStartX = 0;
+      let dragStartY = 0;
+      const zoomLevels = [1, 1.5, 2, 2.5, 3];
+      let currentZoomIndex = 0;
+
+      function openFigureModal(src) {
+        figureModalImg.src = src;
+        currentZoom = 1;
+        currentZoomIndex = 0;
+        panX = 0;
+        panY = 0;
+        updateImageTransform();
+        figureModalImg.classList.remove("zoomed");
+        figureModal.classList.add("active");
+      }
+
+      function updateImageTransform(immediate = false) {
+        if (immediate) {
+          figureModalImg.style.transition = "none";
+        } else {
+          figureModalImg.style.transition = "transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+        }
+        figureModalImg.style.transform = `scale(${currentZoom}) translate(${panX}px, ${panY}px)`;
+        if (currentZoom > 1) {
+          figureModalImg.classList.add("zoomed");
+        } else {
+          figureModalImg.classList.remove("zoomed");
+        }
+      }
+
+      function constrainPan() {
+        const maxPan = 250 * currentZoom;
+        panX = Math.max(-maxPan, Math.min(maxPan, panX));
+        panY = Math.max(-maxPan, Math.min(maxPan, panY));
+      }
+
+      function closeFigureModal() {
+        figureModal.classList.remove("active");
+        currentZoom = 1;
+        currentZoomIndex = 0;
+        panX = 0;
+        panY = 0;
+        updateImageTransform();
+        figureModalImg.classList.remove("zoomed");
+      }
+
+      if (tptFigure) {
+        tptFigure.addEventListener("click", () => openFigureModal(tptFigure.src));
+      }
+
+      if (tptMagnifier) {
+        tptMagnifier.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openFigureModal(tptFigure.src);
+        });
+      }
+
+      const spinTripletFigure = document.getElementById("spin-triplet-figure");
+      const spinTripletMagnifier = document.getElementById("spin-triplet-magnifier");
+      if (spinTripletFigure) {
+        spinTripletFigure.addEventListener("click", () => openFigureModal(spinTripletFigure.src));
+      }
+
+      if (spinTripletMagnifier) {
+        spinTripletMagnifier.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openFigureModal(spinTripletFigure.src);
+        });
+      }
+
+      const euBamnsb2Figure = document.getElementById("eu-bamnsb2-figure");
+      const euBamnsb2Magnifier = document.getElementById("eu-bamnsb2-magnifier");
+      if (euBamnsb2Figure) {
+        euBamnsb2Figure.addEventListener("click", () => openFigureModal(euBamnsb2Figure.src));
+      }
+      if (euBamnsb2Magnifier) {
+        euBamnsb2Magnifier.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openFigureModal(euBamnsb2Figure.src);
+        });
+      }
+
+      const ta114HallbarFigure = document.getElementById("ta114-hallbar-figure");
+      const ta114HallbarMagnifier = document.getElementById("ta114-hallbar-magnifier");
+      if (ta114HallbarFigure) {
+        ta114HallbarFigure.addEventListener("click", () => openFigureModal(ta114HallbarFigure.src));
+      }
+      if (ta114HallbarMagnifier) {
+        ta114HallbarMagnifier.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openFigureModal(ta114HallbarFigure.src);
+        });
+      }
+
+      const mose2FluxFigure = document.getElementById("mose2-flux-figure");
+      const mose2FluxMagnifier = document.getElementById("mose2-flux-magnifier");
+      if (mose2FluxFigure) {
+        mose2FluxFigure.addEventListener("click", () => openFigureModal(mose2FluxFigure.src));
+      }
+      if (mose2FluxMagnifier) {
+        mose2FluxMagnifier.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openFigureModal(mose2FluxFigure.src);
+        });
+      }
+
+      const hfte5CvtFigure = document.getElementById("hfte5-cvt-figure");
+      const hfte5CvtMagnifier = document.getElementById("hfte5-cvt-magnifier");
+      if (hfte5CvtFigure) {
+        hfte5CvtFigure.addEventListener("click", () => openFigureModal(hfte5CvtFigure.src));
+      }
+      if (hfte5CvtMagnifier) {
+        hfte5CvtMagnifier.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openFigureModal(hfte5CvtFigure.src);
+        });
+      }
+
+      const feseteFigure = document.getElementById("fesete-figure");
+      const feseteMagnifier = document.getElementById("fesete-magnifier");
+      if (feseteFigure) {
+        feseteFigure.addEventListener("click", () => openFigureModal(feseteFigure.src));
+      }
+      if (feseteMagnifier) {
+        feseteMagnifier.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openFigureModal(feseteFigure.src);
+        });
+      }
+
+      const mote2Figure = document.getElementById("mote2-figure");
+      const mote2Magnifier = document.getElementById("mote2-magnifier");
+      if (mote2Figure) {
+        mote2Figure.addEventListener("click", () => openFigureModal(mote2Figure.src));
+      }
+      if (mote2Magnifier) {
+        mote2Magnifier.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openFigureModal(mote2Figure.src);
+        });
+      }
+
+      const bendingStrainFigure = document.getElementById("bending-strain-figure");
+      const bendingStrainMagnifier = document.getElementById("bending-strain-magnifier");
+      if (bendingStrainFigure) {
+        bendingStrainFigure.addEventListener("click", () => openFigureModal(bendingStrainFigure.src));
+      }
+      if (bendingStrainMagnifier) {
+        bendingStrainMagnifier.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openFigureModal(bendingStrainFigure.src);
+        });
+      }
+
+      const pulseFieldFigure = document.getElementById("pulse-field-figure");
+      const pulseFieldMagnifier = document.getElementById("pulse-field-magnifier");
+      if (pulseFieldFigure) {
+        pulseFieldFigure.addEventListener("click", () => openFigureModal(pulseFieldFigure.src));
+      }
+      if (pulseFieldMagnifier) {
+        pulseFieldMagnifier.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openFigureModal(pulseFieldFigure.src);
+        });
+      }
+
+      const pztStrainFigure = document.getElementById("pzt-strain-figure");
+      const pztStrainMagnifier = document.getElementById("pzt-strain-magnifier");
+      if (pztStrainFigure) {
+        pztStrainFigure.addEventListener("click", () => openFigureModal(pztStrainFigure.src));
+      }
+      if (pztStrainMagnifier) {
+        pztStrainMagnifier.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openFigureModal(pztStrainFigure.src);
+        });
+      }
+
+      const thermoelectricFigure = document.getElementById("thermoelectric-figure");
+      const thermoelectricMagnifier = document.getElementById("thermoelectric-magnifier");
+      if (thermoelectricFigure) {
+        thermoelectricFigure.addEventListener("click", () => openFigureModal(thermoelectricFigure.src));
+      }
+      if (thermoelectricMagnifier) {
+        thermoelectricMagnifier.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openFigureModal(thermoelectricFigure.src);
+        });
+      }
+
+      const torqueFigure = document.getElementById("torque-figure");
+      const torqueMagnifier = document.getElementById("torque-magnifier");
+      if (torqueFigure) {
+        torqueFigure.addEventListener("click", () => openFigureModal(torqueFigure.src));
+      }
+      if (torqueMagnifier) {
+        torqueMagnifier.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openFigureModal(torqueFigure.src);
+        });
+      }
+
+      const circularDeviceFigure = document.getElementById("circular-device-figure");
+      const circularDeviceMagnifier = document.getElementById("circular-device-magnifier");
+      if (circularDeviceFigure) {
+        circularDeviceFigure.addEventListener("click", () => openFigureModal(circularDeviceFigure.src));
+      }
+      if (circularDeviceMagnifier) {
+        circularDeviceMagnifier.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openFigureModal(circularDeviceFigure.src);
+        });
+      }
+
+      const thermoDeviceFigure = document.getElementById("thermo-device-figure");
+      const thermoDeviceMagnifier = document.getElementById("thermo-device-magnifier");
+      if (thermoDeviceFigure) {
+        thermoDeviceFigure.addEventListener("click", () => openFigureModal(thermoDeviceFigure.src));
+      }
+      if (thermoDeviceMagnifier) {
+        thermoDeviceMagnifier.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openFigureModal(thermoDeviceFigure.src);
+        });
+      }
+
+      const memsThermalFigure = document.getElementById("mems-thermal-figure");
+      const memsThermalMagnifier = document.getElementById("mems-thermal-magnifier");
+      if (memsThermalFigure) {
+        memsThermalFigure.addEventListener("click", () => openFigureModal(memsThermalFigure.src));
+      }
+      if (memsThermalMagnifier) {
+        memsThermalMagnifier.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openFigureModal(memsThermalFigure.src);
+        });
+      }
+
+      const aiFlowchartFigure = document.getElementById("ai-flowchart-figure");
+      const aiFlowchartMagnifier = document.getElementById("ai-flowchart-magnifier");
+      if (aiFlowchartFigure) {
+        aiFlowchartFigure.addEventListener("click", () => openFigureModal(aiFlowchartFigure.src));
+      }
+      if (aiFlowchartMagnifier) {
+        aiFlowchartMagnifier.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openFigureModal(aiFlowchartFigure.src);
+        });
+      }
+
+      const qmdResearchFigure = document.getElementById("qmd-research-figure");
+      const qmdResearchMagnifier = document.getElementById("qmd-research-magnifier");
+      if (qmdResearchFigure) {
+        qmdResearchFigure.addEventListener("click", () => openFigureModal(qmdResearchFigure.src));
+      }
+      if (qmdResearchMagnifier) {
+        qmdResearchMagnifier.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openFigureModal(qmdResearchFigure.src);
+        });
+      }
+
+      figureModalClose.addEventListener("click", closeFigureModal);
+
+      figureModal.addEventListener("click", (e) => {
+        if (e.target === figureModal) {
+          closeFigureModal();
+        }
+      });
+
+      /* Left click to zoom in through predefined levels */
+      figureModalImg.addEventListener("click", (e) => {
+        if (!isDragging) {
+          e.preventDefault();
+          currentZoomIndex = (currentZoomIndex + 1) % zoomLevels.length;
+          currentZoom = zoomLevels[currentZoomIndex];
+          panX = 0;
+          panY = 0;
+          updateImageTransform();
+        }
+      });
+
+      /* Right click to zoom out through predefined levels */
+      figureModalImg.addEventListener("contextmenu", (e) => {
+        e.preventDefault();
+        currentZoomIndex = currentZoomIndex === 0 ? zoomLevels.length - 1 : currentZoomIndex - 1;
+        currentZoom = zoomLevels[currentZoomIndex];
+        panX = 0;
+        panY = 0;
+        updateImageTransform();
+      });
+
+      /* Mouse wheel zoom - smooth increments */
+      figureModalImg.addEventListener("wheel", (e) => {
+        e.preventDefault();
+        const zoomStep = 0.05;
+        const minZoom = 1;
+        const maxZoom = 3;
+
+        if (e.deltaY > 0) {
+          currentZoom = Math.max(minZoom, currentZoom - zoomStep);
+        } else {
+          currentZoom = Math.min(maxZoom, currentZoom + zoomStep);
+        }
+
+        updateImageTransform(false);
+      });
+
+      /* Mouse drag to pan - smooth movement */
+      figureModalImg.addEventListener("mousedown", (e) => {
+        if (currentZoom > 1) {
+          isDragging = true;
+          dragStartX = e.clientX - panX;
+          dragStartY = e.clientY - panY;
+          figureModalImg.style.cursor = "grabbing";
+        }
+      });
+
+      document.addEventListener("mousemove", (e) => {
+        if (isDragging && currentZoom > 1) {
+          panX = e.clientX - dragStartX;
+          panY = e.clientY - dragStartY;
+          constrainPan();
+          updateImageTransform(true);
+        }
+      });
+
+      document.addEventListener("mouseup", () => {
+        if (isDragging) {
+          isDragging = false;
+          figureModalImg.style.cursor = "grab";
+          updateImageTransform(false);
+        }
+      });
+
+      /* ESC key to close modal */
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && figureModal.classList.contains("active")) {
+          closeFigureModal();
+        }
+      });
+    </script>
+  </body>
+</html>
